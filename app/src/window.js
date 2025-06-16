@@ -54,6 +54,12 @@ const updateMenu = async () => {
 
   const contextMenu = Menu.buildFromTemplate([
     {
+      label: "Refresh",
+      click: () => {
+        win.send(RPC_TO_RENDERER.REFRESH);
+      },
+    },
+    {
       label: win.isVisible() ? "Hide Client" : "Show Client",
       click: () => {
         if (win.isVisible()) {

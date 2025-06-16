@@ -260,6 +260,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       void this.safeLoadGames();
     });
 
+    window.pydtApi.ipc.receive(RPC_TO_RENDERER.REFRESH, () => {
+      this.refresh();
+    });
+
     window.pydtApi.ipc.send(RPC_TO_MAIN.START_IOT, {
       topic,
       accessKey: environment.iotClientAccessKey,
